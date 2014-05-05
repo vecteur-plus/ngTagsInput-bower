@@ -1,5 +1,5 @@
 ## Vecteur Plus version
-Build files based on version: https://github.com/vecteur-plus/ngTagsInput/tree/4de3b739a7140da2b9cc6253e50d2b8b7bc6824d
+Build files based on version: https://github.com/vecteur-plus/ngTagsInput/tree/146456dea3c2d2d1be31e356f24fd4c7269924f1
 Include pull-request #141: https://github.com/mbenford/ngTagsInput/pull/141
 
 # ngTagsInput [![Build Status](https://travis-ci.org/mbenford/ngTagsInput.png?branch=master)](https://travis-ci.org/mbenford/ngTagsInput) [![Coverage Status](https://coveralls.io/repos/mbenford/ngTagsInput/badge.png?branch=master)](https://coveralls.io/r/mbenford/ngTagsInput?branch=master) [![devDependency Status](https://david-dm.org/mbenford/ngTagsInput/dev-status.png)](https://david-dm.org/mbenford/ngTagsInput#info=devDependencies)

@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2014 Michael Benford
  * License: MIT
  *
- * Generated at 2014-05-05 17:09:57 +0200
+ * Generated at 2014-05-05 18:25:55 +0200
  */
 (function() {
 'use strict';
@@ -248,18 +248,13 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 events = scope.events,
                 options = scope.options,
                 input = element.find('input'),
-                getTagViewText,
-                addTagFromInput;
+                getInputText;
 
-            getTagViewText = function(){
-                return scope.tagInputForm.tagInput.$viewValue;
-            };
-
-            addTagFromInput = function(){
+            getInputText = function(){
                 if (scope.tagInputForm.tagInput.$valid){
-                    tagList.addText(scope.newTag.text);
+                    return scope.newTag.text;
                 } else {
-                    events.trigger('invalid-tag');
+                    return scope.tagInputForm.tagInput.$viewValue;
                 }
             };
 
@@ -285,10 +280,10 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 .on('input-blur', function() {
                     if (!options.addFromAutocompleteOnly) {
                         if (options.addOnBlur) {
-                            addTagFromInput();
+                            tagList.addText(getInputText());
                         }
 
-                        ngModelCtrl.$setValidity('leftoverText', options.allowLeftoverText ? true : !getTagViewText());
+                        ngModelCtrl.$setValidity('leftoverText', options.allowLeftoverText ? true : !getInputText());
                     }
                 });
 
@@ -335,10 +330,10 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                     addKeys[KEYS.space] = options.addOnSpace;
 
                     shouldAdd = !options.addFromAutocompleteOnly && addKeys[key];
-                    shouldRemove = !shouldAdd && key === KEYS.backspace && getTagViewText().length === 0;
+                    shouldRemove = !shouldAdd && key === KEYS.backspace && getInputText().length === 0;
 
                     if (shouldAdd) {
-                        addTagFromInput();
+                        tagList.addText(getInputText());
 
                         scope.$apply();
                         e.preventDefault();
